@@ -5,12 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.util.Set;
+
 @Entity
 @Table(name="risks")
 public class Risk extends BaseEntity{
     private String name;
     private float defaultRisk;
-    private ContractRisk[] contractRisks;
+    private Set<ContractRisk> contractRisks;
 
     public Risk(String name, float defaultRisk) {
         this.name = name;
@@ -35,7 +37,7 @@ public class Risk extends BaseEntity{
     }
 
     @OneToMany(mappedBy="risks")
-    public ContractRisk[] getContractRisks() {
+    public Set<ContractRisk> getContractRisks() {
         return contractRisks;
     }
 }

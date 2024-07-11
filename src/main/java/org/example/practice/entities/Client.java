@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.util.Set;
+
 @Entity
 @Table(name="clients")
 public class Client {
@@ -13,7 +15,7 @@ public class Client {
     private String lastName;
     private String passportNumberAndSeries;
 
-    private Auto[] autos;
+    private Set<Auto> autos;
     public Client(String firstName, String middleName, String lastName, String passportNumberAndSeries) {
         this.firstName = firstName;
         this.middleName = middleName;
@@ -42,7 +44,7 @@ public class Client {
     }
 
     @OneToMany(mappedBy="clients")
-    public Auto[] getAutos() {
+    public Set<Auto> getAutos() {
         return autos;
     }
 

@@ -2,13 +2,15 @@ package org.example.practice.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name="contract_risks")
 public class ContractRisk extends BaseEntity{
     private Contract contract;
     private Risk risk;
 
-    private Payment[] payments;
+    private Set<Payment> payments;
 
     public ContractRisk(Contract contract, Risk risk) {
         this.contract = contract;
@@ -34,7 +36,7 @@ public class ContractRisk extends BaseEntity{
         this.risk = risk;
     }
     @OneToMany(mappedBy="contract_risks")
-    public Payment[] getPayments() {
+    public Set<Payment> getPayments() {
         return payments;
     }
 }

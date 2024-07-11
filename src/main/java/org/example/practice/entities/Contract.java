@@ -3,6 +3,7 @@ package org.example.practice.entities;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name="contracts")
@@ -12,7 +13,7 @@ public class Contract extends BaseEntity{
     private float insurancePremium;
     private float liabilityLimit;
     private Auto auto;
-    private ContractRisk[] contractRisks;
+    private Set<ContractRisk> contractRisks;
     public Contract( Date startTime,  Date endTime, float insurancePremium, float liabilityLimit) {
         this.startTime = startTime;
         this.endTime = endTime;
@@ -67,7 +68,7 @@ public class Contract extends BaseEntity{
     }
 
     @OneToMany(mappedBy="contracts")
-    public ContractRisk[] getContractRisks() {
+    public Set<ContractRisk> getContractRisks() {
         return contractRisks;
     }
 }

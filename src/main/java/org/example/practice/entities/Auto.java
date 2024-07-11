@@ -2,6 +2,8 @@ package org.example.practice.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name="autos")
 public class Auto  extends BaseEntity{
@@ -11,7 +13,7 @@ public class Auto  extends BaseEntity{
     private float price;
 
     private Client client;
-    private Contract[] contracts;
+    private Set<Contract> contracts;
 
     public Auto(String number, String brand, String model, float price, Client client) {
         this.number = number;
@@ -49,7 +51,7 @@ public class Auto  extends BaseEntity{
     }
 
     @OneToMany(mappedBy="autos")
-    public Contract[] getContracts() {
+    public Set<Contract> getContracts() {
         return contracts;
     }
 }
