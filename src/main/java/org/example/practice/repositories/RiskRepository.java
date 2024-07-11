@@ -8,21 +8,20 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Set;
 
 @Repository
 public interface RiskRepository  extends JpaRepository<Risk, Integer> {
 
     @Query(value = "select r from Risk r where r.id in :ids")
-    List<Risk> getAllByIds(@Param(value = "ids") Set<Integer> ids);
+    Set<Risk> getAllByIds(@Param(value = "ids") Set<Integer> ids);
     @Query(value = "select r from Risk r join r.contractRisks cr")
-    List<Risk> getAllOccurences();
+    Set<Risk> getAllOccurences();
 
     @Query(value = "select r from Risk r join r.contractRisks cr join cr.contract c where c in :contracts")
-    List<Risk> getAllOccurencesWhereContracts(@Param(value = "contracts") Set<Contract> contracts);
+    Set<Risk> getAllOccurencesWhereContracts(@Param(value = "contracts") Set<Contract> contracts);
 
     @Query(value = "select r from Risk r join r.contractRisks cr join cr.payments p where p in :payments")
-    List<Risk> getAllOccurencesWherePayments(@Param(value = "payments") Set<Payment> payments);
+    Set<Risk> getAllOccurencesWherePayments(@Param(value = "payments") Set<Payment> payments);
 
 }
