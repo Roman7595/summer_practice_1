@@ -15,14 +15,14 @@ import java.util.Set;
 public interface RiskRepository  extends JpaRepository<Risk, Integer> {
 
     @Query(value = "select r from Risk r where r.id in :ids")
-    List<Risk> getAllByIds(@Param(value = "ids")Set<Integer> ids);
+    List<Risk> getAllByIds(@Param(value = "ids") Set<Integer> ids);
     @Query(value = "select r from Risk r join r.contractRisks cr")
     List<Risk> getAllOccurences();
 
     @Query(value = "select r from Risk r join r.contractRisks cr join cr.contract c where c in :contracts")
-    List<Risk> getAllOccurencesWhereContract(@Param(value = "contracts")Set<Contract> contracts);
+    List<Risk> getAllOccurencesWhereContracts(@Param(value = "contracts") Set<Contract> contracts);
 
     @Query(value = "select r from Risk r join r.contractRisks cr join cr.payments p where p in :payments")
-    List<Risk> getAllOccurencesWherePayment(@Param(value = "payments")Set<Payment> payments);
+    List<Risk> getAllOccurencesWherePayments(@Param(value = "payments") Set<Payment> payments);
 
 }
