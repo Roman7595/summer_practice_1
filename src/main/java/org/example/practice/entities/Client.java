@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="clients")
-public class Client {
+public class Client extends BaseEntity{
     private String firstName;
     private String middleName;
     private String lastName;
@@ -43,7 +43,7 @@ public class Client {
         return passportNumberAndSeries;
     }
 
-    @OneToMany(mappedBy="clients")
+    @OneToMany(mappedBy="client")
     public Set<Auto> getAutos() {
         return autos;
     }
@@ -62,5 +62,9 @@ public class Client {
 
     public void setPassportNumberAndSeries(String passportNumberAndSeries) {
         this.passportNumberAndSeries = passportNumberAndSeries;
+    }
+
+    public void setAutos(Set<Auto> autos) {
+        this.autos = autos;
     }
 }

@@ -67,8 +67,14 @@ public class Contract extends BaseEntity{
         this.auto = auto;
     }
 
-    @OneToMany(mappedBy="contracts")
+    @OneToMany(mappedBy="contract")
     public Set<ContractRisk> getContractRisks() {
         return contractRisks;
     }
+
+    public void setContractRisks(Set<ContractRisk> contractRisks) {
+        this.contractRisks = contractRisks;
+    }
+
+
 }

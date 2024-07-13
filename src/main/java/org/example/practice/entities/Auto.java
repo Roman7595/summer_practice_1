@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="autos")
-public class Auto  extends BaseEntity{
+public class Auto extends BaseEntity{
     private String number;
     private String brand;
     private String model;
@@ -50,8 +50,32 @@ public class Auto  extends BaseEntity{
         return client;
     }
 
-    @OneToMany(mappedBy="autos")
+    @OneToMany(mappedBy="auto")
     public Set<Contract> getContracts() {
         return contracts;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setContracts(Set<Contract> contracts) {
+        this.contracts = contracts;
     }
 }

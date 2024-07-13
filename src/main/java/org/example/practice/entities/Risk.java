@@ -36,8 +36,12 @@ public class Risk extends BaseEntity{
         this.defaultRisk = defaultRisk;
     }
 
-    @OneToMany(mappedBy="risks")
+    @OneToMany(mappedBy="risk")
     public Set<ContractRisk> getContractRisks() {
         return contractRisks;
+    }
+
+    public void setContractRisks(Set<ContractRisk> contractRisks) {
+        this.contractRisks = contractRisks;
     }
 }

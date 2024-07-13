@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="payments")
-public class Payment {
+public class Payment extends BaseEntity{
     private Date date;
     private int paymentSum;
     private ContractRisk contractRisk;
@@ -44,4 +44,6 @@ public class Payment {
     public void setContractRisk(ContractRisk contractRisk) {
         this.contractRisk = contractRisk;
     }
+
+
 }
