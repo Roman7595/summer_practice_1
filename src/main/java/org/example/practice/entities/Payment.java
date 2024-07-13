@@ -8,10 +8,10 @@ import java.util.Date;
 @Table(name="payments")
 public class Payment extends BaseEntity{
     private Date date;
-    private int paymentSum;
+    private float paymentSum;
     private ContractRisk contractRisk;
 
-    public Payment( Date date, int paymentSum, ContractRisk contractRisk) {
+    public Payment( Date date, float paymentSum, ContractRisk contractRisk) {
         this.date = date;
         this.paymentSum = paymentSum;
         this.contractRisk = contractRisk;
@@ -27,11 +27,11 @@ public class Payment extends BaseEntity{
     }
 
     @Column(name="payment_sum", nullable=false)
-    public int getPaymentSum() {
+    public float getPaymentSum() {
         return paymentSum;
     }
 
-    public void setPaymentSum(int paymentSum) {
+    public void setPaymentSum(float paymentSum) {
         this.paymentSum = paymentSum;
     }
 
