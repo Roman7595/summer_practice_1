@@ -4,6 +4,6 @@ import org.example.practice.entities.Client;
 
 import java.util.Set;
 
-public interface GetAccurateClientsByRisksService {
+public interface GetAccurateClientsByRisksDomainService {
     Set<Client> getAccurateClientsByRisks();
 }
