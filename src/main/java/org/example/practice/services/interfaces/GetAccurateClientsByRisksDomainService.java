@@ -1,9 +1,8 @@
 package org.example.practice.services.interfaces;
 
-import org.example.practice.entities.Client;
+import org.example.practice.DTO.AccurateClientDTO;
 
-import java.util.Set;
 
 public interface GetAccurateClientsByRisksDomainService {
-    Set<Client> getAccurateClientsByRisks();
+    AccurateClientDTO getAccurateClientsByRisks();
 }
