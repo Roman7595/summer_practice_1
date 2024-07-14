@@ -11,9 +11,7 @@ import java.util.Set;
 
 @Repository
 public interface ContractRepository extends JpaRepository<Contract, Integer> {
-    @Query(value = "select c from Contract c where c.id in :ids")
-    Set<Contract> getAllByIds(@Param(value = "ids") Set<Integer> ids);
 
-    @Query(value = "select con from Client cl join cl.autos a join a.contracts con where cl in :clients")
-    Set<Contract> getWhereClients(@Param(value = "clients") Set<Client> clients);
+    @Query(value = "select con from Client cl join cl.autos a join a.contracts con where cl in :client")
+    Set<Contract> getWhereClients(@Param(value = "client") Client client);
 }
