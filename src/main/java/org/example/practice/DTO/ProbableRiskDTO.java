@@ -1,15 +1,11 @@
 package org.example.practice.DTO;
 
-import org.example.practice.entities.Risk;
-
-import java.util.List;
-
 public class ProbableRiskDTO {
-    public List<Risk> risks;
-    public int[] paymentCounts;
+    public RiskDTO risk;
+    public int paymentCount;
 
-    public ProbableRiskDTO(List<Risk> risks, int[] paymentCounts) {
-        this.risks = risks;
-        this.paymentCounts = paymentCounts;
+    public ProbableRiskDTO(RiskDTO risk, int paymentCount) {
+        this.risk = risk;
+        this.paymentCount = paymentCount;
     }
 }
