@@ -1,7 +1,9 @@
 package org.example.practice.services.interfaces;
 
-import java.util.Date;
+import org.example.practice.DTO.PaymentToCreateDTO;
+import org.example.practice.exceptions.InvalidPaymentDateException;
+
 
 public interface AddPaymentDomainService {
-    public int addPayment(int contract_id, int risk_id, Date date, float payment_sum);
+    public int addPayment(PaymentToCreateDTO paymentToCreateDTO) throws InvalidPaymentDateException;
 }

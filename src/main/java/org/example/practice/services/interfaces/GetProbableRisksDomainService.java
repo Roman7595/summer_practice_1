@@ -1,10 +1,9 @@
 package org.example.practice.services.interfaces;
 
 import org.example.practice.DTO.ProbableRiskDTO;
-import org.example.practice.entities.Risk;
 
-import java.util.Set;
+import java.util.List;
 
 public interface GetProbableRisksDomainService {
-    ProbableRiskDTO getAccurateClientsByRisks();
+    List<ProbableRiskDTO> getAccurateClientsByRisks();
 }

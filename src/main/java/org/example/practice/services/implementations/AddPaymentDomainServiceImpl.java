@@ -1,5 +1,7 @@
 package org.example.practice.services.implementations;
 
+import org.example.practice.DTO.PaymentToCreateDTO;
+import org.example.practice.exceptions.InvalidPaymentDateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,8 @@ import org.example.practice.repositories.PaymentRepository;
 import org.example.practice.repositories.RiskRepository;
 import org.example.practice.services.interfaces.AddPaymentDomainService;
 
-import java.util.Date;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class AddPaymentDomainServiceImpl implements AddPaymentDomainService {
@@ -30,28 +33,49 @@ public class AddPaymentDomainServiceImpl implements AddPaymentDomainService {
     private ContractRiskRepository contractRiskRepository;
 
     @Override
-    public int addPayment(int contract_id, int risk_id, Date date, float payment_sum) {
-        Contract contract = contractRepository.getReferenceById(contract_id);
-        Risk risk = riskRepository.getReferenceById(risk_id);
+    public int addPayment(PaymentToCreateDTO paymentToCreateDTO) throws InvalidPaymentDateException {
+        Optional<Contract> contract = contractRepository.findById(paymentToCreateDTO.contract_id);
+        Optional<Risk> risk = riskRepository.findById(paymentToCreateDTO.risk_id);
 
-        ContractRisk contractRisks = contractRiskRepository.getWhereContractAndRisk(contract,risk);
+        if(contract.isEmpty()){
+            System.out.println("No contract");
+            return -1;
+        }
 
-        if(contractRisks==null){
+        if(risk.isEmpty()){
+            System.out.println("No risk");
+            return -1;
+        }
+
+        ContractRisk contractRisk = contractRiskRepository.getWhereContractAndRisk(contract.get(), risk.get());
+
+        if(contractRisk == null){
             System.out.println("No contractRisk");
-            return 0;
+            return -1;
         }
 
-        if (payment_sum<=0){
-            System.out.println("Bad sum");
-            return 0;
+        if (paymentToCreateDTO.payment_sum<=0){
+            System.out.println("Too small sum");
+            return -1;
         }
 
-        if((contract.getStartTime().before(date)) || (date.before(contract.getEndTime()))){
-            System.out.println("Bad Date");
-            return 0;
+        Set<Payment> otherPayments = paymentRepository.getWhereContract(contract.get());
+        float sumOfPayments = 0;
+        for (Payment payment:otherPayments) {
+            sumOfPayments += payment.getPaymentSum();
         }
 
-        Payment payment = new Payment(date, payment_sum, contractRisks);
+        float maxPaymentSum = contract.get().getLiabilityLimit() - sumOfPayments;
+        if (paymentToCreateDTO.payment_sum > maxPaymentSum){
+            System.out.println("Sum must be less than " + maxPaymentSum);
+            return -1;
+        }
+
+        if(!(contract.get().getStartTime().before(paymentToCreateDTO.date)) || !(paymentToCreateDTO.date.before(contract.get().getEndTime()))){
+            throw new InvalidPaymentDateException();
+        }
+
+        Payment payment = new Payment(paymentToCreateDTO.date, paymentToCreateDTO.payment_sum, contractRisk);
         paymentRepository.save(payment);
         return payment.getId();
     }
