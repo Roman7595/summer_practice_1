@@ -17,6 +17,8 @@ public class Payment extends BaseEntity{
         this.contractRisk = contractRisk;
     }
 
+    protected Payment(){}
+
     @Column(name="date", nullable=false)
     public  Date getDate() {
         return date;

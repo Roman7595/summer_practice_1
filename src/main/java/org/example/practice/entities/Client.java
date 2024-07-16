@@ -22,7 +22,7 @@ public class Client extends BaseEntity{
         this.lastName = lastName;
         this.passportNumberAndSeries = passportNumberAndSeries;
     }
-
+    protected  Client(){}
     @Column(name="first_name", nullable=false)
     public String getFirstName() {
         return firstName;

@@ -17,6 +17,8 @@ public class ContractRisk extends BaseEntity{
         this.risk = risk;
     }
 
+    protected ContractRisk(){}
+
     @ManyToOne
     @JoinColumn(name="contract_id", nullable=false)
     public Contract getContract() {

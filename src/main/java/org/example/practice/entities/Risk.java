@@ -18,6 +18,9 @@ public class Risk extends BaseEntity{
         this.name = name;
         this.defaultRisk = defaultRisk;
     }
+
+    protected Risk(){}
+
     @Column(name="name", nullable=false, unique=true)
     public String getName() {
         return name;

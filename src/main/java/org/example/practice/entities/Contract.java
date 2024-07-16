@@ -14,13 +14,14 @@ public class Contract extends BaseEntity{
     private float liabilityLimit;
     private Auto auto;
     private Set<ContractRisk> contractRisks;
-    public Contract( Date startTime,  Date endTime, float insurancePremium, float liabilityLimit) {
+    public Contract( Date startTime,  Date endTime, float insurancePremium, float liabilityLimit, Auto auto) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.insurancePremium = insurancePremium;
         this.liabilityLimit = liabilityLimit;
+        this.auto = auto;
     }
-
+    protected Contract(){}
     @Column(name="start_time", nullable=false)
     public  Date getStartTime() {
         return startTime;

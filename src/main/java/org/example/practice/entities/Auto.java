@@ -23,6 +23,7 @@ public class Auto extends BaseEntity{
         this.client = client;
     }
 
+    protected Auto(){}
 
     @Column(nullable=false, unique = true)
     public String getNumber() {
