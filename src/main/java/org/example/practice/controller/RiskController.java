@@ -1,9 +1,12 @@
 package org.example.practice.controller;
 
+import org.example.practice.DTO.PaymentDTO;
 import org.example.practice.DTO.ProbableRiskDTO;
-import org.example.practice.services.interfaces.GetProbableRisksDomainService;
+import org.example.practice.DTO.RiskDTO;
+import org.example.practice.services.interfaces.RiskDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,10 +16,20 @@ import java.util.List;
 @RequestMapping("/api/risks")
 public class RiskController {
     @Autowired
-    GetProbableRisksDomainService getProbableRisksDomainService;
+    RiskDomainService riskDomainService;
 
     @GetMapping("/get_probable_risks")
     List<ProbableRiskDTO> getProbableRisks(){
-        return getProbableRisksDomainService.getAccurateClientsByRisks();
+        return riskDomainService.getAccurateClientsByRisks();
+    }
+
+    @GetMapping("/")
+    List<RiskDTO> getAll(){
+        return riskDomainService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    RiskDTO one(@PathVariable Integer id){
+        return riskDomainService.getById(id);
     }
 }
