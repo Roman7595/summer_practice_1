@@ -68,7 +68,7 @@ public class Contract extends BaseEntity{
         this.auto = auto;
     }
 
-    @OneToMany(mappedBy="contract")
+    @OneToMany(mappedBy="contract", fetch = FetchType.LAZY)
     public Set<ContractRisk> getContractRisks() {
         return contractRisks;
     }

@@ -5,7 +5,7 @@ import org.example.practice.DTO.ClientDTO;
 import org.example.practice.DTO.RiskDTO;
 import org.example.practice.entities.*;
 import org.example.practice.repositories.*;
-import org.example.practice.services.interfaces.GetAccurateClientsByRisksDomainService;
+import org.example.practice.services.interfaces.ClientDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class GetAccurateClientsByRisksDomainServiceImpl implements GetAccurateClientsByRisksDomainService {
+public class GetAccurateClientsByRisksDomainServiceImpl implements ClientDomainService {
     @Autowired
     private ContractRiskRepository contractRiskRepository;
     @Autowired

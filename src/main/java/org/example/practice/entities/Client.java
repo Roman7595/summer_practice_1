@@ -1,9 +1,6 @@
 package org.example.practice.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
@@ -43,7 +40,7 @@ public class Client extends BaseEntity{
         return passportNumberAndSeries;
     }
 
-    @OneToMany(mappedBy="client")
+    @OneToMany(mappedBy="client", fetch = FetchType.LAZY)
     public Set<Auto> getAutos() {
         return autos;
     }

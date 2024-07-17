@@ -45,13 +45,13 @@ public class Auto extends BaseEntity{
         return price;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="client_id", nullable=false)
     public Client getClient() {
         return client;
     }
 
-    @OneToMany(mappedBy="auto")
+    @OneToMany(mappedBy="auto", fetch = FetchType.LAZY)
     public Set<Contract> getContracts() {
         return contracts;
     }

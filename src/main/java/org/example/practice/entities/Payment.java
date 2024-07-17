@@ -37,7 +37,7 @@ public class Payment extends BaseEntity{
         this.paymentSum = paymentSum;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="contract_risk_id", nullable=false)
     public ContractRisk getContractRisk() {
         return contractRisk;

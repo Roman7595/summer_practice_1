@@ -19,7 +19,7 @@ public class ContractRisk extends BaseEntity{
 
     protected ContractRisk(){}
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="contract_id", nullable=false)
     public Contract getContract() {
         return contract;
@@ -28,7 +28,7 @@ public class ContractRisk extends BaseEntity{
     public void setContract(Contract contract) {
         this.contract = contract;
     }
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="risk_id", nullable=false)
     public Risk getRisk() {
         return risk;
@@ -37,7 +37,7 @@ public class ContractRisk extends BaseEntity{
     public void setRisk(Risk risk) {
         this.risk = risk;
     }
-    @OneToMany(mappedBy="contractRisk")
+    @OneToMany(mappedBy="contractRisk", fetch = FetchType.LAZY)
     public Set<Payment> getPayments() {
         return payments;
     }

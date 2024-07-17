@@ -3,8 +3,8 @@
 //import org.example.practice.DTO.AutoDTO;
 //import org.example.practice.entities.Auto;
 //import org.example.practice.entities.Client;
-//import org.example.practice.repositories.AutoRepository;
-//import org.example.practice.repositories.ClientRepository;
+//import org.example.practice.repositories.AutoRepositoryJPA;
+//import org.example.practice.repositories.ClientRepositoryJPA;
 //import org.example.practice.services.interfaces.AutoService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Service;
@@ -14,9 +14,9 @@
 //@Service
 //public class AutoServiceImpl  implements AutoService {
 //    @Autowired
-//    private ClientRepository clientRepository;
+//    private ClientRepositoryJPA clientRepository;
 //    @Autowired
-//    private AutoRepository autoRepository;
+//    private AutoRepositoryJPA autoRepository;
 //    @Override
 //    public AutoDTO createAuto(AutoDTO autoDTO) {
 //        Optional<Client> client = clientRepository.findById(autoDTO.clientId);

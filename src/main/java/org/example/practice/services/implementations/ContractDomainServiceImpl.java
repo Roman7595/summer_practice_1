@@ -1,6 +1,7 @@
 package org.example.practice.services.implementations;
 
 import org.example.practice.entities.*;
+import org.example.practice.exceptions.AutoNotFoundException;
 import org.example.practice.exceptions.ClientNotFoundException;
 import org.example.practice.repositories.*;
 import org.example.practice.services.interfaces.InsurancePremiumCounterDomainService;
@@ -21,11 +22,10 @@ public class InsurancePremiumCounterDomainServiceImpl implements InsurancePremiu
     private ContractRiskRepository contractRiskRepository;
     @Autowired
     private AutoRepository autoRepository;
-    public float countInsurancePremium(int auto_id, List<Integer> risk_ids) throws ClientNotFoundException {
+    public float countInsurancePremium(int auto_id, List<Integer> risk_ids) throws ClientNotFoundException, AutoNotFoundException {
             Optional<Auto> auto = autoRepository.findById(auto_id);
             if (auto.isEmpty()){
-                System.out.println("No auto");
-                return -1;
+                throw new AutoNotFoundException();
             }
 
             Client client = clientRepository.getWhereAutos(auto.get());

@@ -1,9 +1,6 @@
 package org.example.practice.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
@@ -39,7 +36,7 @@ public class Risk extends BaseEntity{
         this.defaultRisk = defaultRisk;
     }
 
-    @OneToMany(mappedBy="risk")
+    @OneToMany(mappedBy="risk", fetch = FetchType.LAZY)
     public Set<ContractRisk> getContractRisks() {
         return contractRisks;
     }

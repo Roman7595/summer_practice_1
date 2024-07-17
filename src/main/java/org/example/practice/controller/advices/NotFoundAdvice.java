@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class InvalidPaymentDateAdvice {
+public class NotFoundAdvice {
     @ResponseBody
     @ExceptionHandler(InvalidPaymentDateException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
