@@ -1,17 +1,23 @@
-package org.example.practice.DTO;
+package org.example.practice.DTO.toAdd;
+
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
-public class PaymentToCreateDTO {
-    public int contract_id;
-    public int risk_id;
+public class PaymentToAddDTO {
+    @NotNull(message = "contract id is missing")
+    public int contractId;
+    @NotNull(message = "risk id is missing")
+    public int riskId;
+    @NotNull(message = "date is missing")
     public Date date;
-    public float payment_sum;
+    @NotNull(message = "payment sum is missing")
+    public float paymentSum;
 
-    public PaymentToCreateDTO(int contract_id, int risk_id, Date date, float payment_sum) {
-        this.contract_id = contract_id;
-        this.risk_id = risk_id;
+    public PaymentToAddDTO(int contractId, int riskId, Date date, float paymentSum) {
+        this.contractId = contractId;
+        this.riskId = riskId;
         this.date = date;
-        this.payment_sum = payment_sum;
+        this.paymentSum = paymentSum;
     }
 }
