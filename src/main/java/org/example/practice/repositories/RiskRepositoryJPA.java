@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public interface RiskRepository  extends JpaRepository<Risk, Integer> {
+public interface RiskRepositoryJPA extends JpaRepository<Risk, Integer> {
 
     @Query(value = "select r from Risk r where r.id in :ids")
     Set<Risk> getAllByIds(@Param(value = "ids") List<Integer> ids);

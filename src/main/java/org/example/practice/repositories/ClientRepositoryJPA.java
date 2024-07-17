@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Integer> {
+public interface ClientRepositoryJPA extends JpaRepository<Client, Integer> {
     @Query(value = "select c from Client c join c.autos a where a = :auto")
     Client getWhereAutos(@Param(value = "auto") Auto auto);
 }

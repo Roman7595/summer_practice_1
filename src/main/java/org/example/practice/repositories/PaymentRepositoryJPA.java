@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface PaymentRepository extends JpaRepository<Payment, Integer> {
+public interface PaymentRepositoryJPA extends JpaRepository<Payment, Integer> {
 
     @Query(value = "select p from Client cl join cl.autos a "
             + "join a.contracts con join con.contractRisks cr join cr.payments p join cr.risk r where cl = :client and r = :risk")
