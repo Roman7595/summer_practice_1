@@ -1,7 +1,9 @@
 package org.example.practice.exceptions;
 
-public class AutoNotFoundException  extends RuntimeException{
+import org.example.practice.exceptions.baseExceptions.CustomNotFoundException;
+
+public class AutoNotFoundException  extends CustomNotFoundException {
     public AutoNotFoundException(){
-        super("No Auto");
+        super("This Auto is not found");
     }
 }

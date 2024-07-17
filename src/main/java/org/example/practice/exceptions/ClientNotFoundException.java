@@ -1,7 +1,9 @@
 package org.example.practice.exceptions;
 
-public class ClientNotFoundException extends RuntimeException{
+import org.example.practice.exceptions.baseExceptions.CustomNotFoundException;
+
+public class ClientNotFoundException extends CustomNotFoundException {
     public ClientNotFoundException(){
-        super("No client");
+        super("This Client is not found");
     }
 }
