@@ -23,7 +23,7 @@ public class RiskDomainServiceImpl implements RiskDomainService {
     @Autowired
     private ContractRepository contractRepository;
     @Override
-    public List<ProbableRiskDTO> getAccurateClientsByRisks() {
+    public List<ProbableRiskDTO> getProbableRisks() {
         List<Risk> allRisks = riskRepository.getAll();
         int i = 0;
         List<ProbableRiskDTO> result = new ArrayList<>();

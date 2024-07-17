@@ -1,6 +1,5 @@
 package org.example.practice.controller;
 
-import org.example.practice.DTO.PaymentDTO;
 import org.example.practice.DTO.ProbableRiskDTO;
 import org.example.practice.DTO.RiskDTO;
 import org.example.practice.services.interfaces.RiskDomainService;
@@ -20,7 +19,7 @@ public class RiskController {
 
     @GetMapping("/get_probable_risks")
     List<ProbableRiskDTO> getProbableRisks(){
-        return riskDomainService.getAccurateClientsByRisks();
+        return riskDomainService.getProbableRisks();
     }
 
     @GetMapping("/")

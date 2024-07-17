@@ -6,7 +6,7 @@ import org.example.practice.DTO.RiskDTO;
 import java.util.List;
 
 public interface RiskDomainService {
-    public List<ProbableRiskDTO> getAccurateClientsByRisks();
+    public List<ProbableRiskDTO> getProbableRisks();
 
     public List<RiskDTO> getAll();
 
