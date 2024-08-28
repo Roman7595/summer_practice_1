@@ -1,14 +1,13 @@
-package org.example.practice.repositories;
+package org.example.practice.repositories.customRepositories;
 
 import org.example.practice.entities.*;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Set;
 
-
-public interface ContractRiskRepositoryJPA extends JpaRepository<ContractRisk,Integer> {
+public interface ContractRiskCustomRepository extends Repository<ContractRisk,Integer> {
     @Query(value = "select cr from ContractRisk cr where cr.contract = :contract and cr.risk = :risk")
     ContractRisk getWhereContractAndRisk(@Param(value = "contract") Contract contract, @Param(value = "risk") Risk risk);
 
@@ -18,4 +17,7 @@ public interface ContractRiskRepositoryJPA extends JpaRepository<ContractRisk,In
     @Query(value = "select cr from ContractRisk cr join cr.contract con join con.auto a join a.client cl where cl = :client and cr.risk = :risk")
     Set<ContractRisk> getWhereClientAndRisk(@Param(value = "client") Client client, @Param(value = "risk") Risk risk);
 
+    @Query(value = "select cr from ContractRisk cr")
+    ContractRisk save(ContractRisk contractRisk);
 }
+
