@@ -2,9 +2,9 @@ package org.example.practice.repositories.impl;
 
 import org.example.practice.entities.Auto;
 import org.example.practice.entities.Client;
-import org.example.practice.repositories.CRUDRepositories.GetRepository;
-import org.example.practice.repositories.CRUDRepositories.SaveRepository;
-import org.example.practice.repositories.CustomRepositories.ClientCustomRepository;
+import org.example.practice.repositories.baseRepositories.GetRepository;
+import org.example.practice.repositories.baseRepositories.SaveRepository;
+import org.example.practice.repositories.customRepositories.ClientCustomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -31,12 +31,12 @@ public class ClientRepositoryImpl implements org.example.practice.repositories.i
 
     @Override
     public List<Client> findAll() {
-        return getRepository.findAll("Client");
+        return getRepository.findAll(Client.class);
     }
 
     @Override
     public Optional<Client> findById(int id){
-        return getRepository.findById(id,"Client");
+        return getRepository.findById(id,Client.class);
     }
     @Override
     public Client getWhereAutos(Auto auto){
