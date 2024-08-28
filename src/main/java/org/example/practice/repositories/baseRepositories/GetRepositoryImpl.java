@@ -16,13 +16,13 @@ public class GetRepositoryImpl<T> implements GetRepository<T>{
 
 
     @Transactional
-    public Optional<T> findById(int id, String entityClass){
-        return Optional.of((T) entityManager.createQuery("Select t from " + entityClass + " t where t.id = ?1").setParameter(1, id).getSingleResult());
+    public Optional<T> findById(int id, Class<T> entityClass){
+        return Optional.of(entityManager.find(entityClass, id));
     }
 
     @Transactional
-    public List<T> findAll(String entityClass){
-        return entityManager.createQuery("Select t from " + entityClass + " t").getResultList();
+    public List<T> findAll(Class<T> entityClass){
+        return entityManager.createQuery("Select t from " + entityClass.getName() + " t").getResultList();
 
     }
 
