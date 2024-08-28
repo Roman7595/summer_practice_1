@@ -1,7 +1,6 @@
 package org.example.practice.repositories.impl;
 
 import org.example.practice.entities.Risk;
-import org.example.practice.repositories.RiskRepositoryJPA;
 import org.example.practice.repositories.baseRepositories.GetRepository;
 import org.example.practice.repositories.customRepositories.RiskCustomRepository;
 import org.example.practice.repositories.interfaces.RiskRepository;
