@@ -1,4 +1,4 @@
-package org.example.practice.repositories.CRUDRepositories;
+package org.example.practice.repositories.baseRepositories;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

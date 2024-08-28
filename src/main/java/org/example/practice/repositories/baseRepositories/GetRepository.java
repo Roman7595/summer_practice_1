@@ -1,4 +1,4 @@
-package org.example.practice.repositories.CRUDRepositories;
+package org.example.practice.repositories.baseRepositories;
 
 import java.util.List;
 import java.util.Optional;
