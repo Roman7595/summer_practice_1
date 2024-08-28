@@ -4,7 +4,6 @@ import org.example.practice.entities.Client;
 import org.example.practice.entities.Contract;
 import org.example.practice.entities.Payment;
 import org.example.practice.entities.Risk;
-import org.example.practice.repositories.PaymentRepositoryJPA;
 import org.example.practice.repositories.baseRepositories.GetRepository;
 import org.example.practice.repositories.baseRepositories.SaveRepository;
 import org.example.practice.repositories.customRepositories.PaymentCustomRepository;
